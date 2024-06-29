@@ -96,9 +96,9 @@ We want this file modes:
 
 ## We need this in /root/vaultwarden:
 
-* .env: Change both passwords
+* .env: Change three passwords (mysql passwords need to be the same as above) and the email user name; obviously you want to change the domainname
 * add_admin_token.sh : Change password and run ONCE: sh add_admin_token.sh
-* compose.yml
+* compose.yml : Look for neuro.uni-bremen.de related stuff and change it... 
 
 In /root/vaultwarden
 
@@ -116,24 +116,9 @@ Show logs continously:
 ```
 docker compose logs -f
 ```
-# TODO:
 
-## SMTP mit SIGNUPS_VERIFY=true
-```
-SMTP_HOST=smtp.domain.tld
-SMTP_FROM=vaultwarden@domain.tld
-SMTP_FROM_NAME=Vaultwarden
-SMTP_USERNAME=username
-SMTP_PASSWORD=password
-SMTP_TIMEOUT=15
-SIGNUPS_VERIFY=true
-SMTP_SECURITY=starttls
-SMTP_PORT=587
-```
-## Options to think about:
+# Options to think about:
 
 ```
 ORG_CREATION_USERS=none
-INVITATIONS_ALLOWED=false
-EMAIL_CHANGE_ALLOWED=false
 ```
