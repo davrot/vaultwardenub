@@ -11,7 +11,7 @@
 apt update
 apt upgrade
 
-apt install git pkg-config libssl-dev curl mc argon2 ca-certificates
+apt install git pkg-config libssl-dev curl mc argon2 ca-certificates net-tools
 
 install -m 0755 -d /etc/apt/keyrings
 
