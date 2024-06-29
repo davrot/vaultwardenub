@@ -28,3 +28,43 @@ apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docke
 
 docker run hello-world
 
+mkdir /root/nginx
+mkdir /root/vaultwarden
+
+# What now? 
+We need this in /root/nginx:
+
+*ca.pem : Public Key plus certificate chain
+*key.pem : Private SSL key decrypted  
+*nginx.conf
+
+We want this file modes: 
+
+```
+-rw------- 1 root root 3268 Jun 28 17:30 key.pem
+-rw------- 1 root root 8964 Jun 28 17:30 ca.pem
+-rw-r--r-- 1 root root 1327 Jun 28 17:47 nginx.conf
+```
+
+We need this in /root/vaultwarden:
+
+* .env: Change both passwords
+* add_admin_token.sh : Change password and run ONCE: sh add_admin_token.sh
+* compose.yml
+
+In /root/vaultwarden
+
+Start docker: 
+```
+docker compose up -d
+```
+
+Stop docker: 
+```
+docker compose down
+```
+
+Show logs continously:
+```
+docker compose logs -f
+```
