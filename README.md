@@ -1,3 +1,11 @@
+# What we need
+
+* server with debian
+* DNS entry 
+* SSL certificates via https://onlinetools.zfn.uni-bremen.de/server/content/onlinetools/
+
+
+# Install notes
 apt update
 apt upgrade
 
