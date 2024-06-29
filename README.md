@@ -1,6 +1,6 @@
 # What we need
 
-* server with debian
+* server with Ubuntu
 * DNS entry 
 * SSL certificates via https://onlinetools.zfn.uni-bremen.de/server/content/onlinetools/
 
@@ -30,6 +30,13 @@ docker run hello-world
 
 mkdir /root/nginx
 mkdir /root/vaultwarden
+
+# Firewall 
+
+ufw allow 22
+ufw allow 443
+ufw enable
+
 
 # What now? 
 We need this in /root/nginx:
