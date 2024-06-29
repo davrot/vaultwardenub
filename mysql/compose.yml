@@ -1,0 +1,29 @@
+services:
+  mariadb:
+    image: "mariadb"
+    container_name: "mariadb"
+    hostname: "mariadb"
+    restart: always
+    volumes:
+      - "/mariadb_socket:/run/mysqld"
+      - "mariadb_vol:/var/lib/mysql"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_DATABASE: "vaultwarden"
+      MARIADB_USER: "vaultwardenuser"
+      MYSQL_UNIX_PORT: "/run/mysqld/mysqld.sock"
+      MYSQL_ROOT_HOST: "%"
+    healthcheck:
+      test: ["CMD", "/bin/sh", "-c", "mariadb-admin ping -h localhost -u root -p$$MARIADB_ROOT_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 1s
+    ports:
+      - 3306:3306
+    network_mode: bridge
+
+volumes:
+  mariadb_vol:
