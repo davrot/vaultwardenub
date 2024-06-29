@@ -57,7 +57,30 @@ nmap -v -A vaultwarden.neuro.uni-bremen.de
 ```
 
 # What now? 
-We need this in /root/nginx:
+
+## We need this in /root/mysql:
+
+* .env: Change both passwords
+* compose.yml
+
+In /root/mysql
+
+Start docker: 
+```
+docker compose up -d
+```
+
+Stop docker: 
+```
+docker compose down
+```
+
+Show logs continously:
+```
+docker compose logs -f
+```
+
+## We need this in /root/nginx:
 
 * ca.pem : Public Key plus certificate chain
 * key.pem : Private SSL key decrypted  
@@ -71,7 +94,7 @@ We want this file modes:
 -rw-r--r-- 1 root root 1327 Jun 28 17:47 nginx.conf
 ```
 
-We need this in /root/vaultwarden:
+## We need this in /root/vaultwarden:
 
 * .env: Change both passwords
 * add_admin_token.sh : Change password and run ONCE: sh add_admin_token.sh
