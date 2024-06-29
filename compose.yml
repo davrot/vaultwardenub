@@ -21,9 +21,9 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
-
-    networks:
-      - VaultwardenNet
+    ports:
+      - 3306:3306
+    network_mode: bridge
 
   vaultwarden:
     image: vaultwarden/server:latest
@@ -31,7 +31,7 @@ services:
     restart: always
     environment:
       DOMAIN: ${DOMAIN}
-      DATABASE_URL: mysql://vaultwardenuser:${MARIADB_PASSWORD}@mariadb:3306/vaultwarden
+      DATABASE_URL: mysql://vaultwardenuser:${MARIADB_PASSWORD}@localhost:3306/vaultwarden
       ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
       SIGNUPS_DOMAINS_WHITELIST: uni-bremen.de
       SIGNUPS_ALLOWED: false
@@ -40,11 +40,10 @@ services:
       - "mariadb_socket:/run/mysqld"
     ports:
       - 11001:80
-    networks:
-      - VaultwardenNet
     depends_on:
       mariadb:
         condition: service_healthy
+    network_mode: bridge
 
   nginx:
     image: nginx:stable-alpine
@@ -60,18 +59,13 @@ services:
     environment:
       NGINX_WORKER_PROCESSES: "4"
       NGINX_WORKER_CONNECTIONS: "768"
-    networks:
-      - VaultwardenNet
     depends_on:
       mariadb:
         condition: service_healthy
-
+    network_mode: bridge
 
 volumes:
   vaultwarden_vol:
   mariadb_vol:
   mariadb_socket:
 
-networks:
-  VaultwardenNet:
-    driver: bridge
