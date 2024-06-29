@@ -47,7 +47,11 @@ docker run hello-world
 mkdir /root/nginx
 mkdir /root/vaultwarden
 
+# Check the ports with an external computer
 
+```
+nmap -v -A vaultwarden.neuro.uni-bremen.de
+```
 
 # What now? 
 We need this in /root/nginx:
