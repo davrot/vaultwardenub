@@ -59,9 +59,9 @@ nmap -v -A vaultwarden.neuro.uni-bremen.de
 # What now? 
 We need this in /root/nginx:
 
-*ca.pem : Public Key plus certificate chain
-*key.pem : Private SSL key decrypted  
-*nginx.conf
+* ca.pem : Public Key plus certificate chain
+* key.pem : Private SSL key decrypted  
+* nginx.conf
 
 We want this file modes: 
 
@@ -109,6 +109,8 @@ SMTP_PORT=587
 ```
 ## Options to think about:
 
-1. ORG_CREATION_USERS=none
-2. INVITATIONS_ALLOWED=false
-3. EMAIL_CHANGE_ALLOWED=false
+```
+ORG_CREATION_USERS=none
+INVITATIONS_ALLOWED=false
+EMAIL_CHANGE_ALLOWED=false
+```
