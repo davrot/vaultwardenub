@@ -93,3 +93,22 @@ Show logs continously:
 ```
 docker compose logs -f
 ```
+# TODO:
+
+## SMTP mit SIGNUPS_VERIFY=true
+```
+SMTP_HOST=smtp.domain.tld
+SMTP_FROM=vaultwarden@domain.tld
+SMTP_FROM_NAME=Vaultwarden
+SMTP_USERNAME=username
+SMTP_PASSWORD=password
+SMTP_TIMEOUT=15
+SIGNUPS_VERIFY=true
+SMTP_SECURITY=starttls
+SMTP_PORT=587
+```
+## Options to think about:
+
+1. ORG_CREATION_USERS=none
+2. INVITATIONS_ALLOWED=false
+3. EMAIL_CHANGE_ALLOWED=false
