@@ -6,6 +6,8 @@
 
 
 # Install notes
+
+```
 apt update
 apt upgrade
 
@@ -46,6 +48,7 @@ docker run hello-world
 
 mkdir /root/nginx
 mkdir /root/vaultwarden
+```
 
 # Check the ports with an external computer
 
