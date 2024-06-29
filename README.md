@@ -26,16 +26,27 @@ apt-get update
 
 apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+echo "{" > /etc/docker/daemon.json
+echo '  "iptables": false' >> /etc/docker/daemon.json 
+echo "}" >> /etc/docker/daemon.json  
+
+systemctl restart docker
+
+ufw allow in on docker0
+ufw route allow in on docker0
+ufw route allow out on docker0
+
+ufw allow 22
+ufw allow 443
+ufw enable
+
+ufw status verbose
+
 docker run hello-world
 
 mkdir /root/nginx
 mkdir /root/vaultwarden
 
-# Firewall 
-
-ufw allow 22
-ufw allow 443
-ufw enable
 
 
 # What now? 
