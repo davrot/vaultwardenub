@@ -117,6 +117,10 @@ Show logs continously:
 docker compose logs -f
 ```
 
+# Disable YubiCo and Duo special support
+
+Use the admin console to disable them. We only want tot use the FIDO2 Webauth mode. 
+
 # Options to think about:
 
 ```
