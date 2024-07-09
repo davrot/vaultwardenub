@@ -123,6 +123,5 @@ Use the admin console to disable them. We only want tot use the FIDO2 Webauth mo
 
 # Options to think about:
 
-```
-ORG_CREATION_USERS=none
-```
+* Separate SSL Proxy and Vaultwarden / MariaDB
+* Allow only 134.102.0.0/16 und 2001:638:708::/48? But then the smartphones need VPN access to the University IP range.
