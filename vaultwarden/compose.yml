@@ -9,7 +9,7 @@ services:
       ADMIN_TOKEN: ${VAULTWARDEN_ADMIN_TOKEN}
       SIGNUPS_DOMAINS_WHITELIST: uni-bremen.de
       SIGNUPS_ALLOWED: false
-      SMTP_HOST: "mailhost.neurotec.uni-bremen.de"
+      SMTP_HOST: "smtp.uni-bremen.de"
       SMTP_SECURITY: "force_tls"
       SMTP_PORT: 465
       SMTP_FROM: "vaultwarden@neuro.uni-bremen.de"
@@ -29,23 +29,9 @@ services:
       - "/mariadb_socket:/run/mysqld"
     ports:
       - 11001:80
+
     network_mode: bridge
 
-  nginx:
-    image: nginx:stable-alpine
-    container_name: nginx
-    restart: always
-    volumes:
-      - "/root/nginx/key.pem:/certs/nginx_key.pem:ro"
-      - "/root/nginx/ca.pem:/certs/nginx_certificate.pem:ro"
-      - "/root/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
-    ports:
-      - "0.0.0.0:443:443"
-      - "0.0.0.0:80:80"
-    environment:
-      NGINX_WORKER_PROCESSES: "4"
-      NGINX_WORKER_CONNECTIONS: "768"
-    network_mode: bridge
 
 volumes:
   vaultwarden_vol:
