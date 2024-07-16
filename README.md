@@ -52,6 +52,17 @@ docker run hello-world
 
 mkdir /root/nginx
 mkdir /root/vaultwarden
+
+# Mail
+# Add root to the /etc/alias file and add the msmtprc file to /etc
+apt -y install msmtp msmtp-mta mailutils
+vi /etc/msmtprc
+chmod 644 /etc/msmtprc
+touch /var/log/msmtp.log
+chmod 666 /var/log/msmtp.log
+# ln -s /usr/bin/msmtp /usr/sbin/sendmail
+
+# echo "This is a test" | msmtp -v -d davrot@uni-bremen.de
 ```
 
 # Check the ports with an external computer
