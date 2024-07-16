@@ -1,0 +1,23 @@
+services:
+  backup:
+    image: "backup_image"
+    container_name: backup
+    hostname: backup
+    restart: always
+
+    network_mode: bridge
+
+    volumes:
+      - /root/backup/backup:/data/backup:ro
+      - /root/backup/backup.pub:/data/backup.pub:ro
+      - mysql_mariadb_vol:/data/backup_docker/mysql_mariadb_vol
+      - vaultwarden_vaultwarden_vol:/data/backup_docker/vaultwarden_vaultwarden_vol
+
+volumes:
+  mysql_mariadb_vol:
+   external: true
+   name: mysql_mariadb_vol
+
+  vaultwarden_vaultwarden_vol:
+   external: true
+   name: vaultwarden_vaultwarden_vol
