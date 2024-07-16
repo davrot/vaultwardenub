@@ -71,6 +71,7 @@ Don't forget to set up the cron job for the backup:
 crontab -e
 
 0 0 * * * /bin/bash /root/backup/make_backup.sh
+*/5 * * * * /bin/bash /root/check_docker.sh
 ```
 
 # Check the ports with an external computer
