@@ -62,7 +62,7 @@ touch /var/log/msmtp.log
 chmod 666 /var/log/msmtp.log
 # ln -s /usr/bin/msmtp /usr/sbin/sendmail
 
-# echo "This is a test" | msmtp -v -d davrot@uni-bremen.de
+# echo "Test message" | mail -s "Test subject" root
 ```
 
 Don't forget to set up the cron job for the backup:
