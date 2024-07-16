@@ -65,6 +65,14 @@ chmod 666 /var/log/msmtp.log
 # echo "This is a test" | msmtp -v -d davrot@uni-bremen.de
 ```
 
+Don't forget to set up the cron job for the backup:
+
+```
+crontab -e
+
+0 0 * * * /bin/bash /root/backup/make_backup.sh
+```
+
 # Check the ports with an external computer
 
 ```
