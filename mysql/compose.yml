@@ -21,9 +21,15 @@ services:
       timeout: 5s
       retries: 5
       start_period: 1s
-    ports:
+
+    expose:
       - 3306:3306
-    network_mode: bridge
+    networks:
+      - vaultwarden-network
 
 volumes:
   mariadb_vol:
+
+networks:
+  vaultwarden-network:
+    external: true
