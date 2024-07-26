@@ -27,11 +27,15 @@ services:
     volumes:
       - "vaultwarden_vol:/data"
       - "/mariadb_socket:/run/mysqld"
-    ports:
-      - 11001:80
-
-    network_mode: bridge
-
+    expose:
+      - 80
+    networks:
+      - vaultwarden-network
 
 volumes:
   vaultwarden_vol:
+
+networks:
+  vaultwarden-network:
+    external: true
+
