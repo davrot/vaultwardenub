@@ -13,5 +13,10 @@ services:
     environment:
       NGINX_WORKER_PROCESSES: "4"
       NGINX_WORKER_CONNECTIONS: "768"
-    network_mode: bridge
     
+    networks:
+      - vaultwarden-network
+
+networks:
+  vaultwarden-network:
+    external: true
